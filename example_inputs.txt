@@ -1,0 +1,17 @@
+messy input
+1.5 cups butter
+1 tsp kosher salt
+6 eggs
+1/2 vanilla bean (or 2 tsp pure vanilla extract)
+250 g  (1 c) whole milk
+63 g (.25 c) freshly squeezed lemon juice
+
+
+clean input
+1.5 cups butter
+1 tsp kosher salt
+6 eggs
+0.5 vanilla bean
+2 tsp pure vanilla extract
+250 g  whole milk
+63 g freshly squeezed lemon juice
