@@ -13,22 +13,11 @@ This Streamlit app helps you scale cake recipes based on the diameter of the cak
 
 The volume of a cake is proportional to the square of the diameter. This app uses the formula:
 
-V=π×( 
-2
-diameter
-​
- ) 
-2
- ×height
+```V = π * (diameter / 2)^2 * height```
 
 The scaling factor is derived as:
 
-ScalingFactor=( 
-base_diameter
-new_diameter
-​
- ) 
-2
+```Scaling Factor = (new_diameter / base_diameter)^2```
 
 When you select a new diameter, the app scales the recipe ingredients proportionally to the new volume using the scaling factor.
 
