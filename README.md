@@ -43,7 +43,7 @@ If your original cake has an 8-inch diameter and you want a 5-inch diameter cake
 - Base Volume = 8² = 64
 - Desired Volume = 4² = 16
 - Scaling Factor = 16 / 64 ≈ 0.25
-- 
+  
 This means you should multiply all ingredients by **0.25** to create a cake with the desired 4-inch diameter.
 
 ## Installation
