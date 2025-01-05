@@ -7,45 +7,44 @@ import re
 st.title("Cake 🍰 Converter")
 
 # Slider for selecting the diameter
-diameter = st.slider(
-    "Select Cake Diameter (in inches):",
+original_diameter = st.slider(
+    "Select Original Cake Diameter (in inches):",
     min_value=4,
     max_value=12,
-    value=4,  # Default value
+    value=8,  # Default value
+    step=1  # Step size
+)
+
+# Slider for selecting the diameter
+desired_diameter = st.slider(
+    "Select Desired Cake Diameter (in inches):",
+    min_value=4,
+    max_value=12,
+    value=8,  # Default value
     step=1  # Step size
 )
 
 # Display selected diameter
-st.write(f"Selected Diameter: {diameter} inches")
+st.write(f"Selected Original Diameter: {original_diameter} inches")
+st.write(f"Selected Desired Diameter: {desired_diameter} inches")
 
 # Display the explanation in the sidebar
 st.sidebar.subheader("Scaling Factor Explanation")
 st.sidebar.write("""
 The scaling factor is based on the fact that the volume of a cake is proportional to the area of its base when the height remains constant.
-
-Volume of a cylindrical cake is given by:
-V = π * r² * h
-where r is the radius and h is the height.
-
-Since r = diameter / 2, substituting gives:
-V = π * (diameter / 2)² * h
-   = (π * diameter² * h) / 4
-
-This shows that the volume is proportional to the square of the diameter.
-
-When scaling a recipe based on the new diameter, the ratio of the new volume to the original volume is proportional to the square of their diameters:
-
-Scaling Factor = (new_diameter / base_diameter)²
-
-Therefore, multiplying the original ingredient amounts by this scaling factor gives the adjusted amounts for the new cake size.
+scaling factor = desired diameter/original diameter.
 """)
 
 # Define the base diameter
-base_diameter = 4
+# Define the base diameter (use original_diameter directly)
+base_diameter = original_diameter
 
 # Calculate scaling factor
-scaling_factor = (diameter / base_diameter) ** 2
-st.write(f"Scaling Factor: {scaling_factor:.2f}")
+# scaling_factor = (desired_diameter / base_diameter) ** 2
+base_volume = original_diameter ** 2
+desired_volume = desired_diameter ** 2 
+scaling_factor = desired_volume/ base_volume
+st.write(f"Scaling Factor from the {base_diameter} inches to {desired_diameter} inches: {scaling_factor:.2f}")
 
 # Function to parse the ingredients input
 def parse_ingredient_line(line):
