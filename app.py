@@ -7,45 +7,75 @@ import re
 st.title("Cake 🍰 Converter")
 
 # Slider for selecting the diameter
-diameter = st.slider(
-    "Select Cake Diameter (in inches):",
+original_diameter = st.slider(
+    "Select original cake diameter (in inches):",
     min_value=4,
     max_value=12,
-    value=4,  # Default value
+    value=8,  # Default value
+    step=1  # Step size
+)
+
+# Slider for selecting the diameter
+desired_diameter = st.slider(
+    "Select desired cake diameter (in inches):",
+    min_value=4,
+    max_value=12,
+    value=8,  # Default value
     step=1  # Step size
 )
 
 # Display selected diameter
-st.write(f"Selected Diameter: {diameter} inches")
+st.write(f"Selected original diameter: {original_diameter} inches")
+st.write(f"Selected desired diameter: {desired_diameter} inches")
 
 # Display the explanation in the sidebar
 st.sidebar.subheader("Scaling Factor Explanation")
 st.sidebar.write("""
-The scaling factor is based on the fact that the volume of a cake is proportional to the area of its base when the height remains constant.
+### Explanation of the Scaling Factor:
 
-Volume of a cylindrical cake is given by:
-V = π * r² * h
-where r is the radius and h is the height.
+When scaling a cake recipe, we assume the **height** of the cake remains constant, so the scaling is determined by the ratio of the **areas of the circular bases** of the two cakes.
 
-Since r = diameter / 2, substituting gives:
-V = π * (diameter / 2)² * h
-   = (π * diameter² * h) / 4
+---
 
-This shows that the volume is proportional to the square of the diameter.
+#### Key Concepts:
 
-When scaling a recipe based on the new diameter, the ratio of the new volume to the original volume is proportional to the square of their diameters:
+1. **Area of a circle** is proportional to the square of its diameter.  
+   Since the height remains constant, the **volume** of the cake is directly proportional to the area of its base.  
+   Therefore, to scale the recipe, we need to compute the ratio of the areas of the two cake bases.
 
-Scaling Factor = (new_diameter / base_diameter)²
+2. **Base volume** is calculated as:  
+   Base Volume = (Original Diameter)²  
+   This represents the proportional area of the original cake.
 
-Therefore, multiplying the original ingredient amounts by this scaling factor gives the adjusted amounts for the new cake size.
+3. **Desired volume** is calculated as:  
+   Desired Volume = (Desired Diameter)²  
+   This represents the proportional area of the desired cake.
+
+4. **Scaling Factor**:  
+   Scaling Factor = Desired Volume / Base Volume = (Desired Diameter)² / (Original Diameter)²  
+   This ratio tells you how much to multiply each ingredient by to achieve the correct size for the new cake.
+
+---
+
+#### Example:
+
+- If your original cake has an **8-inch diameter** and you want a **5-inch diameter** cake:  
+  Base Volume = 8² = 64  
+  Desired Volume = 4² = 16  
+  Scaling Factor = 16 / 64 ≈ 0.25 
+
+This means you should multiply **all ingredients by 0.25** to create a cake with the desired 5-inch diameter.
+
 """)
 
 # Define the base diameter
-base_diameter = 4
+base_diameter = original_diameter
 
 # Calculate scaling factor
-scaling_factor = (diameter / base_diameter) ** 2
-st.write(f"Scaling Factor: {scaling_factor:.2f}")
+base_volume = original_diameter ** 2
+desired_volume = desired_diameter ** 2 
+scaling_factor = desired_volume / base_volume
+st.write(f"Scaling factor from {base_diameter} inches to {desired_diameter} inches: {scaling_factor:.2f}")
 
 # Function to parse the ingredients input
 def parse_ingredient_line(line):
