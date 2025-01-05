@@ -25,3 +25,15 @@ When you select a new diameter, the app scales the recipe ingredients proportion
 
 1. **Select Cake Diameter**: Use the slider to choose the cake pan diameter (in inches).
 2. **Input Ingredients**: In the text area, enter ingredients, one per line. For example:
+3. **Click Convert**: Press the "Convert" button to see the scaled ingredients for the new cake diameter.
+
+### Example
+Given the base diameter of 4 inches and a selected diameter of 6 inches, if your ingredient is 2 cups sugar, the app will calculate the new amount as:
+```New_amount = 2 * (6 / 4)^2 = 4.5 cups sugar```
+
+## Installation
+
+To run the app locally, make sure you have Python and Streamlit installed. If not, install them via:
+
+```bash
+pip install streamlit
