@@ -13,23 +13,38 @@ This Streamlit app helps you scale cake recipes based on the diameter of the cak
 
 The volume of a cake is proportional to the square of the diameter. This app uses the formula:
 
-```V = π * (diameter / 2)^2 * height```
+1. **Area of a circle** is proportional to the square of its diameter.  
+   Since the height remains constant, the **volume** of the cake is directly proportional to the area of its base.  
+   Therefore, to scale the recipe, we need to compute the ratio of the areas of the two cake bases.
 
-The scaling factor is derived as:
+2. **Base volume** is calculated as:  
+   ```Base Volume = (Original Diameter)²```
+   This represents the proportional area of the original cake.
 
-```Scaling Factor = (new_diameter / base_diameter)^2```
+3. **Desired volume** is calculated as:  
+   ```Desired Volume = (Desired Diameter)²``` 
+   This represents the proportional area of the desired cake.
+
+4. **Scaling Factor**:  
+   Scaling Factor = Desired Volume / Base Volume = (Desired Diameter)² / (Original Diameter)²  
+   This ratio tells you how much to multiply each ingredient by to achieve the correct size for the new cake.
 
 When you select a new diameter, the app scales the recipe ingredients proportionally to the new volume using the scaling factor.
 
 ## How to Use
 
-1. **Select Cake Diameter**: Use the slider to choose the cake pan diameter (in inches).
-2. **Input Ingredients**: In the text area, enter ingredients, one per line. For example:
-3. **Click Convert**: Press the "Convert" button to see the scaled ingredients for the new cake diameter.
+1. **Select Base Diameter**: Use the slider to choose the original diameter (in inches).
+2. **Select Desired Diameter**: Use the slider to choose the desired diameter (in inches).
+3. **Input Ingredients**: In the text area, enter ingredients, one per line. For example:
+4. **Click Convert**: Press the "Convert" button to see the scaled ingredients for the new cake diameter.
 
 ### Example
-Given the base diameter of 4 inches and a selected diameter of 6 inches, if your ingredient is 2 cups sugar, the app will calculate the new amount as:
-```New_amount = 2 * (6 / 4)^2 = 4.5 cups sugar```
+If your original cake has an 8-inch diameter and you want a 5-inch diameter cake:
+- Base Volume = 8² = 64
+- Desired Volume = 4² = 16
+- Scaling Factor = 16 / 64 ≈ 0.25
+- 
+This means you should multiply all ingredients by **0.25** to create a cake with the desired 4-inch diameter.
 
 ## Installation
 
