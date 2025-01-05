@@ -64,7 +64,7 @@ When scaling a cake recipe, we assume the **height** of the cake remains constan
   Desired Volume = 4² = 16  
   Scaling Factor = 16 / 64 ≈ 0.25 
 
-This means you should multiply **all ingredients by 0.25** to create a cake with the desired 5-inch diameter.
+This means you should multiply **all ingredients by 0.25** to create a cake with the desired 4-inch diameter.
 
 """)
 
