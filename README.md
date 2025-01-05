@@ -1,6 +1,6 @@
 # Cake 🍰 Converter
 
-This Streamlit app helps you scale cake recipes based on the volume of the cake. It adjusts ingredient amounts by calculating the scaling factor, ensuring the same proportions are maintained when changing the size of the cake.
+This [Streamlit app](https://cakeconversion-lcwogxrkysagthk6nazcaw.streamlit.app/) helps you scale cake recipes based on the volume of the cake. It adjusts ingredient amounts by calculating the scaling factor, ensuring the same proportions are maintained when changing the size of the cake.
 
 ## Features
 
